@@ -7,7 +7,7 @@ import { routes } from './routes/routes'
 
 
 Vue.use(VueRouter);
-Vue.use(VueMaterial)
+Vue.use(VueMaterial);
 import App from './App.vue'
 
 Vue.use(MaterialDashboard);

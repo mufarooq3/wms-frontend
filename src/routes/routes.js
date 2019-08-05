@@ -6,6 +6,8 @@ import create_category from '@/components/Dashboard/CreateCategory.vue'
 import list_category from '@/components/Dashboard/listCategory.vue'
 import create_item from '@/components/Dashboard/CreateItem.vue'
 import list_item from '@/components/Dashboard/listItem.vue'
+import wasted_items from '@/components/Dashboard/enterWaste.vue'
+import list_wasted_items from '@/components/Dashboard/listWastes.vue'
 
 export const routes = [
   { path: '', component: login },
@@ -43,6 +45,16 @@ export const routes = [
         path: "listItem",
         name: "List Item",
         component: list_item
+      },
+      {
+        path: "enterWaste",
+        name: "Enter Wasted Item",
+        component: wasted_items
+      },
+      {
+        path: "listWastes",
+        name: "List Wasted Item",
+        component: list_wasted_items
       }
     ]
   }
