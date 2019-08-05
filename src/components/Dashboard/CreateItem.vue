@@ -13,12 +13,13 @@
                   <div class="md-layout-item md-small-size-50 md-size-100">
                     <md-autocomplete :md-options="categories">
                       <label>Select Category...</label>
+                      <template slot="md-autocomplete-item" slot-scope="{ item }">{{ item.name }}</template>
                     </md-autocomplete>
                   </div>
                   <div class="md-layout-item md-small-size-50 md-size-50">
                     <md-field>
                       <label>Name</label>
-                      <md-input v-model="username" type="text"></md-input>
+                      <md-input v-model="name" type="text"></md-input>
                     </md-field>
                   </div>
                   <div class="md-layout-item md-small-size-50 md-size-50">
@@ -53,16 +54,28 @@
   </div>
 </template>
 <script>
+import CategoryRepository from "../../repository/CategoryRepository";
+import ItemRepository from "../../repository/ItemRepository";
 export default {
   name: "create-item",
   data() {
     return {
       categories: ["Vegetables", "Fruits", "Grains", "Protiens"],
       dataBackgroundColor: "green",
-      username: null,
+      name: null,
       description: null,
       image: null
     };
+  },
+  created(){
+    this.getCategory();
+  },
+  methods: {
+    async getCategory(){
+      const { data } = await CategoryRepository.list();
+      console.log(data);
+      this.categories = data.result.data;
+    }
   }
 };
 </script>

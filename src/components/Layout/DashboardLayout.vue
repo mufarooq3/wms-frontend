@@ -2,15 +2,12 @@
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      <vue-dropdown>
-        <sidebar-link to="/dashboard">
-          <p>Dashboard</p>
-        </sidebar-link>
-        <sidebar-link to="/dashboard/createUser">
-          <p>Create User</p>
-        </sidebar-link>
-      </vue-dropdown>
-
+      <sidebar-link to="/dashboard">
+        <p>Dashboard</p>
+      </sidebar-link>
+      <sidebar-link to="/dashboard/createUser">
+        <p>Create User</p>
+      </sidebar-link>
       <sidebar-link to="/dashboard/usertable">
         <p>List Users</p>
       </sidebar-link>
