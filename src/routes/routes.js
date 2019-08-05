@@ -19,42 +19,66 @@ export const routes = [
       {
         path: "usertable",
         name: "Users",
-        component: usertable
+        component: usertable,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: "createUser",
         name: "Create User",
-        component: createUser
+        component: createUser,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: "CreateCategory",
         name: "Create Category",
-        component: create_category
+        component: create_category,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: "listCategory",
         name: "List Category",
-        component: list_category
+        component: list_category,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: "CreateItem",
         name: "Create Item",
-        component: create_item
+        component: create_item,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: "listItem",
         name: "List Item",
-        component: list_item
+        component: list_item,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: "enterWaste",
         name: "Enter Wasted Item",
-        component: wasted_items
+        component: wasted_items,
+        meta: {
+          requiresAuth: true
+        }
       },
       {
         path: "listWastes",
         name: "List Wasted Item",
-        component: list_wasted_items
+        component: list_wasted_items,
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   }

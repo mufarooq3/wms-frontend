@@ -61,6 +61,8 @@ export default {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     },
     logout(){
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
       this.$router.push('/');
     }
   }
