@@ -10,27 +10,27 @@
             <md-card-content>
               <div class="content">
                 <div class="md-layout">
-                    <div class="md-layout-item md-small-size-50 md-size-50">
-                      <md-field>
-                        <label>Name</label>
-                        <md-input v-model="username" type="text"></md-input>
-                      </md-field>
-                    </div>
-                    <div class="md-layout-item md-small-size-50 md-size-50">
-                      <md-field>
-                        <label>Upload Image</label>
-                        <md-file v-model="image" accept="image/*" />
-                      </md-field>
-                    </div>
-                    <div class="md-layout-item md-small-size-50 md-size-100">
-                      <md-field>
-                        <label>Description</label>
-                        <md-textarea v-model="description" type="text"></md-textarea>
-                      </md-field>
-                    </div>
-                    <div class="md-layout-item md-size-100 text-right">
-                      <md-button class="md-raised md-success">Create</md-button>
-                    </div>
+                  <div class="md-layout-item md-small-size-50 md-size-50">
+                    <md-field>
+                      <label>Name</label>
+                      <md-input v-model="Name" type="text"></md-input>
+                    </md-field>
+                  </div>
+                  <div class="md-layout-item md-small-size-50 md-size-50">
+                    <md-field>
+                      <label>Upload Image</label>
+                      <md-file v-model="Image" accept="image/*" />
+                    </md-field>
+                  </div>
+                  <div class="md-layout-item md-small-size-50 md-size-100">
+                    <md-field>
+                      <label>Description</label>
+                      <md-textarea v-model="Description" type="text"></md-textarea>
+                    </md-field>
+                  </div>
+                  <div class="md-layout-item md-size-100 text-right">
+                    <md-button v-on:click="createCategory" class="md-raised md-success">Create</md-button>
+                  </div>
                 </div>
               </div>
             </md-card-content>
@@ -41,16 +41,30 @@
   </div>
 </template>
 <script>
+import CategoryRepository from "../../repository/CategoryRepository";
 export default {
   name: "create-category",
   data() {
     return {
       dataBackgroundColor: "green",
-      username: null,
-      description: null,
-      image:null
+      Name: null,
+      Description: null,
+      Image:null
     };
+  },
+  methods: {
+    async createCategory(){
+      const category = {
+
+        name: this.Name,
+        description: this.Description,
+        image: this.Image,
+      };
+      console.log(category);
+      await CategoryRepository.create(category); 
+    }
   }
+
 };
 </script>
 <style></style>

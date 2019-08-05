@@ -9,7 +9,7 @@
           </md-card-header>
           <md-card-content>
             <div>
-                <md-table v-model="users" :table-header-color="tableHeaderColor">
+                <md-table v-model="items" :table-header-color="tableHeaderColor">
                     <md-table-row slot="md-table-row" slot-scope="{ item }">
                         <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
                         <md-table-cell md-label="price">{{ item.price }}</md-table-cell>
@@ -20,7 +20,7 @@
                                 <md-icon>edit</md-icon>
                                 <md-tooltip md-direction="top">Edit</md-tooltip>
                             </md-button>
-                            <md-button class="md-just-icon md-simple md-danger">
+                            <md-button v-on:click="deleteItem(item.id)" class="md-just-icon md-simple md-danger">
                                 <md-icon>delete</md-icon>
                                 <md-tooltip md-direction="top">Delete</md-tooltip>
                             </md-button>
@@ -35,6 +35,7 @@
   </div>
 </template>
 <script>
+import CategoryRepository from "../../repository/ItemRepository";
 export default {
   name: "",
  
@@ -45,7 +46,7 @@ export default {
         default: "green"
         },
       selected: [],
-      users: [
+      items: [
         {
           name: "Potato balls",
           price: "$21",
@@ -67,6 +68,21 @@ export default {
         }
       ]
     };
+  },
+  created(){
+    this.getItems();
+  },
+  methods: {
+    async getItems(){
+      const { data } = await ItemRepository.list();
+      console.log(data);
+      this.items = data.result.data;
+    },
+    async deleteItem(id){
+      console.log(id);
+      const { data } = await ItemRepository.delete(id);
+      console.log(data);
+    }
   }
 };
 </script>

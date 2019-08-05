@@ -63,7 +63,7 @@
           </div>
 
           <div class="md-layout-item md-size-100 text-right">
-            <md-button :click="createUser" class="md-raised md-success">Create</md-button>
+            <md-button v-on:click="createUser" class="md-raised md-success">Create</md-button>
             <md-snackbar
               v-if="saveSuccessful"
               md-position="center"
