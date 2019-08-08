@@ -4,6 +4,7 @@ import 'vue-material/dist/vue-material.min.css'
 import MaterialDashboard from "./material-dashboard";
 import VueRouter from 'vue-router'
 import { routes } from './routes/routes'
+import _ from 'lodash'
 import Auth from "./repository/Auth"
 
 

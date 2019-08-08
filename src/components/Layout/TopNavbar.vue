@@ -16,11 +16,7 @@
         </md-button>
 
         <div class="md-collapse">
-          <div class="md-autocomplete">
-            <md-autocomplete class="search" v-model="selectedEmployee" :md-options="employees">
-              <label>Search...</label>
-            </md-autocomplete>
-          </div>
+          
           <md-list>
             <md-list-item href="#/">
               <i class="material-icons"></i>
@@ -44,16 +40,7 @@ export default {
   data() {
     return {
       selectedEmployee: null,
-      employees: [
-        "Jim Halpert",
-        "Dwight Schrute",
-        "Michael Scott",
-        "Pam Beesly",
-        "Angela Martin",
-        "Kelly Kapoor",
-        "Ryan Howard",
-        "Kevin Malone"
-      ]
+      
     };
   },
   methods: {

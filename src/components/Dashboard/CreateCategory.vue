@@ -22,14 +22,25 @@
                       <md-file v-model="Image" accept="image/*" />
                     </md-field>
                   </div>
-                  <div class="md-layout-item md-small-size-50 md-size-100">
-                    <md-field>
-                      <label>Description</label>
-                      <md-textarea v-model="Description" type="text"></md-textarea>
-                    </md-field>
-                  </div>
                   <div class="md-layout-item md-size-100 text-right">
-                    <md-button v-on:click="createCategory" class="md-raised md-success">Create</md-button>
+                    <md-button v-on:click="createCategory" class="md-raised md-success">
+                      Create
+                      <md-progress-spinner
+                        v-if="loading"
+                        style="spinner-border:white"
+                        :md-stroke="3"
+                        :md-diameter="25"
+                        md-mode="indeterminate"
+                      ></md-progress-spinner>
+                    </md-button>
+                    <md-snackbar
+                      :md-position="position='center'"
+                      :md-duration="4000"
+                      :md-active.sync="success"
+                      md-persistent
+                    >
+                      <span>Category has been added successfully!</span>
+                    </md-snackbar>
                   </div>
                 </div>
               </div>
@@ -48,23 +59,31 @@ export default {
     return {
       dataBackgroundColor: "green",
       Name: null,
-      Description: null,
-      Image:null
+      Image: null,
+      loading: false,
+      success: false
     };
   },
   methods: {
-    async createCategory(){
+    createCategory() {
       const category = {
-
         name: this.Name,
-        description: this.Description,
         image: this.Image,
       };
+      this.loading=true;
       console.log(category);
-      await CategoryRepository.create(category); 
+      
+      CategoryRepository.create(category).then((res)=>{
+        this.success = true;
+        this.Name= null,
+        this.Image= null,
+        this.loading=false;
+        
+      }).catch((err)=>{
+        this.loading=false;
+      });
     }
   }
-
 };
 </script>
 <style></style>

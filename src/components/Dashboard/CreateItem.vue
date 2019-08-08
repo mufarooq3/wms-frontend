@@ -28,21 +28,31 @@
                       <md-input v-model="price" type="number"></md-input>
                     </md-field>
                   </div>
-                  <div class="md-layout-item md-small-size-50 md-size-100">
-                    <md-field>
-                      <label>Description</label>
-                      <md-textarea v-model="description" type="text"></md-textarea>
-                    </md-field>
-                  </div>
                   <div class="md-layout-item md-small-size-50 md-size-50">
                     <md-field>
                       <label>Upload Image</label>
                       <md-file v-model="image" accept="image/*" />
                     </md-field>
                   </div>
-
                   <div class="md-layout-item md-size-100 text-right">
-                    <md-button class="md-raised md-success">Create</md-button>
+                    <md-button v-on:click="getItem" class="md-raised md-success">
+                      Create
+                      <md-progress-spinner
+                        v-if="loading"
+                        style="spinner-border:white"
+                        :md-stroke="3"
+                        :md-diameter="25"
+                        md-mode="indeterminate"
+                      ></md-progress-spinner>
+                    </md-button>
+                    <md-snackbar
+                      :md-position="position='center'"
+                      :md-duration="4000"
+                      :md-active.sync="success"
+                      md-persistent
+                    >
+                      <span>Item has been added successfully!</span>
+                    </md-snackbar>
                   </div>
                 </div>
               </div>
@@ -56,6 +66,7 @@
 <script>
 import CategoryRepository from "../../repository/CategoryRepository";
 import ItemRepository from "../../repository/ItemRepository";
+import { async } from 'q';
 export default {
   name: "create-item",
   data() {
@@ -63,8 +74,10 @@ export default {
       categories: ["Vegetables", "Fruits", "Grains", "Protiens"],
       dataBackgroundColor: "green",
       name: null,
-      description: null,
-      image: null
+      price: null,
+      image: null,
+      loading: false,
+      success: false
     };
   },
   created(){
@@ -75,6 +88,27 @@ export default {
       const { data } = await CategoryRepository.list();
       console.log(data);
       this.categories = data.result.data;
+    },
+    getItem(){
+      const Item = {
+
+        name: this.name,
+        image: this.image,
+        price: this.price,
+      };
+      this.loading=true;
+      console.log(Item);
+      
+      ItemRepository.create(Item).then((res)=>{
+        this.success = true;
+        this.name= null,
+        this.price= null,
+        this.image= null,
+        this.loading=false;
+        
+      }).catch((err)=>{
+        this.loading=false;
+      });
     }
   }
 };

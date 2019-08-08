@@ -7,7 +7,7 @@
             <h4 class="title">Users</h4>
           </md-card-header>
           <md-card-content>
-            <simple-table table-header-color="green"></simple-table>
+            <simple-table ></simple-table>
           </md-card-content>
         </md-card>
       </div>

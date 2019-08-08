@@ -8,6 +8,9 @@ import create_item from '@/components/Dashboard/CreateItem.vue'
 import list_item from '@/components/Dashboard/listItem.vue'
 import wasted_items from '@/components/Dashboard/enterWaste.vue'
 import list_wasted_items from '@/components/Dashboard/listWastes.vue'
+import edit_category from '@/components/Dashboard/editCategory.vue'
+import edit_user from '@/components/Dashboard/EditUser.vue'
+import edit_item from '@/components/Dashboard/editItem.vue'
 
 export const routes = [
   { path: '', component: login },
@@ -79,6 +82,36 @@ export const routes = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: "editCategory/:id",
+        name: "Edit category",
+        component: edit_category,
+        props: true,
+        meta: {
+          requiresAuth: true
+        }
+
+      },
+      {
+        path: "EditUser/:id",
+        name: "Edit User",
+        component: edit_user,
+        props: true,
+        meta: {
+          requiresAuth: true
+        }
+
+      },
+      {
+        path: "editItem/:id/:id2",
+        name: "Edit Item",
+        component: edit_item,
+        props: true,
+        meta: {
+          requiresAuth: true
+        }
+
       }
     ]
   }

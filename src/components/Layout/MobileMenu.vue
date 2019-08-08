@@ -14,10 +14,7 @@ export default {
     return {
       search: null,
       selectedEmployee: null,
-      employees: [
-        "Jim Halpert",
-        "Dwight Schrute",
-      ]
+      
     };
   }
 };

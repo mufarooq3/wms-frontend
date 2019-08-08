@@ -23,9 +23,6 @@
       <sidebar-link to="/dashboard/listItem">
         <p>List Item</p>
       </sidebar-link>
-      <sidebar-link to="/dashboard/enterWaste">
-        <p>Enter Wastes</p>
-      </sidebar-link>
       <sidebar-link to="/dashboard/listWastes">
         <p>List Wasted Items</p>
       </sidebar-link>

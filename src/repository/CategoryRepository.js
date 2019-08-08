@@ -16,5 +16,9 @@ export default {
 
     delete(id){
         return Repository.delete(`${resource}/delete?id=${id}`);
+    },
+
+    update(payload){
+        return Repository.post(`${resource}/update`, payload);
     }
 }

@@ -14,6 +14,7 @@
                         <md-table-cell md-label="Item">{{ item.name }}</md-table-cell>
                         <md-table-cell md-label="Category">{{ item.category }}</md-table-cell>
                         <md-table-cell md-label="Remaining/Wasted">{{ item.remain }}</md-table-cell>
+                        <md-table-cell md-label="Time">{{ item.time }}</md-table-cell>
                         <md-table-cell md-label="Action">
                             <md-button class="md-just-icon md-simple md-primary">
                                 <md-icon>edit</md-icon>
@@ -44,6 +45,7 @@ export default {
         default: "green"
         },
       selected: [],
+      time: null,
       users: [
         {
           name: "Grains",
